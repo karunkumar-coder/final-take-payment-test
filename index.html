@@ -2,93 +2,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final Take | Event Registration</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-      background: #101010;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      padding: 32px 24px;
-      text-align: center;
-      background: #1c1c1c;
-      border: 1px solid #333;
-      border-radius: 20px;
-    }
-
-    .logo {
-      color: #ffd43b;
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    p { color: #d0d0d0; line-height: 1.6; }
-
-    .amount {
-      margin: 24px 0;
-      font-size: 42px;
-      font-weight: bold;
-    }
-
-    .pay-button {
-      display: block;
-      padding: 16px;
-      border-radius: 12px;
-      background: #ffd43b;
-      color: #111;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .note {
-      margin-top: 22px;
-      font-size: 13px;
-      color: #aaa;
-    }
-
-    .upi-id {
-      overflow-wrap: anywhere;
-      color: #ffd43b;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Take | Payment Test</title>
+<style>
+body {
+  margin: 0; min-height: 100vh; display: grid;
+  place-items: center; padding: 20px;
+  background: #101010; color: white;
+  font-family: Arial, sans-serif;
+}
+.card {
+  width: 100%; max-width: 400px; padding: 28px 22px;
+  box-sizing: border-box; text-align: center;
+  background: #1c1c1c; border: 1px solid #333;
+  border-radius: 20px;
+}
+.logo { color: #ffd43b; font-size: 28px; font-weight: bold; }
+.amount { font-size: 42px; font-weight: bold; margin: 20px; }
+button, .pay {
+  display: block; width: 100%; padding: 15px; margin-top: 12px;
+  box-sizing: border-box; border: 0; border-radius: 10px;
+  font-size: 16px; font-weight: bold; cursor: pointer;
+  text-decoration: none;
+}
+button { background: #ffd43b; color: #111; }
+.pay { background: #303030; color: white; }
+.note { color: #bbb; font-size: 13px; line-height: 1.6; }
+.upi { color: #ffd43b; overflow-wrap: anywhere; }
+</style>
 </head>
 <body>
-  <main class="card">
-    <div class="logo">FINAL TAKE</div>
-    <h2>Event Registration</h2>
-    <p>Test the payment link for our upcoming café event.</p>
+<main class="card">
+  <div class="logo">FINAL TAKE</div>
+  <h2>Payment Test</h2>
+  <p>Sample registration payment</p>
+  <div class="amount">₹10</div>
 
-    <div class="amount">₹10</div>
+  <p class="note">UPI ID</p>
+  <p class="upi" id="upi">karunkumar.p08@oksbi</p>
 
-    <a class="pay-button"
-       href="upi://pay?pa=karunkumar.p08@oksbi&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR&amp;tn=Final%20Take%20test%20registration">
-      Pay ₹10
-    </a>
+  <button onclick="copyUPI()">Copy UPI ID</button>
 
-    <p class="note">
-      TEST ONLY — not official event registration.
-      Your UPI app should open when you tap the button.
-      Confirm the recipient and amount before paying.
-    </p>
+  <a class="pay"
+     href="upi://pay?pa=karunkumar.p08%40oksbi&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR">
+     Try opening UPI app
+  </a>
 
-    <p class="note">
-      UPI ID: <span class="upi-id">karunkumar.p08@oksbi</span>
-    </p>
-  </main>
+  <p class="note" id="message">
+    If the app link fails, copy the UPI ID, open your UPI app
+    manually, choose Pay to UPI ID, and enter ₹10.
+    Confirm the recipient before paying.
+  </p>
+
+  <p class="note">
+    TEST ONLY. Payment is not automatically verified.
+    Do not treat this page as a confirmed registration.
+  </p>
+</main>
+
+<script>
+async function copyUPI() {
+  const upi = "karunkumar.p08@oksbi";
+  try {
+    await navigator.clipboard.writeText(upi);
+    document.getElementById("message").textContent =
+      "UPI ID copied. Open your UPI app and paste it.";
+  } catch {
+    document.getElementById("message").textContent =
+      "Copy this UPI ID manually: " + upi;
+  }
+}
+</script>
 </body>
 </html>
