@@ -39,21 +39,10 @@ button { background: #ffd43b; color: #111; }
   <p>Sample registration payment</p>
   <div class="amount">₹10</div>
 
-  <p class="note">UPI ID</p>
-  <p class="upi" id="upi">karunkumar.p08@oksbi</p>
-
-  <button onclick="copyUPI()">Copy UPI ID</button>
-
-  <a class="pay"
-     href="upi://pay?pa=karunkumar.p08%40oksbi&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR">
-     Try opening UPI app
-  </a>
-
-  <p class="note" id="message">
-    If the app link fails, copy the UPI ID, open your UPI app
-    manually, choose Pay to UPI ID, and enter ₹10.
-    Confirm the recipient before paying.
-  </p>
+<a class="pay"
+   href="upi://pay?pa=karunkumar.p08%40oksbi&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR&amp;tn=Final%20Take%20test%20registration">
+   Pay ₹10
+</a>
 
   <p class="note">
     TEST ONLY. Payment is not automatically verified.
