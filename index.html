@@ -5,259 +5,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b0b0b">
-
-  <title>Final Take | Event Registration</title>
+  <title>Final Take | Registration</title>
 
   <style>
-    :root {
-      --bg: #0b0b0b;
-      --card: #151515;
-      --yellow: #ffd43b;
-      --text: #ffffff;
-      --muted: #b5b5b5;
-      --border: #303030;
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       min-height: 100vh;
-      padding: 24px 16px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at top, #29230c 0%, var(--bg) 45%);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      align-items: center;
+      padding: 20px;
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
     }
 
     .container {
       width: 100%;
-      max-width: 480px;
-    }
-
-    .brand {
+      max-width: 420px;
       text-align: center;
-      margin-bottom: 26px;
     }
 
-    .brand-name {
+    .logo {
       font-size: 32px;
       font-weight: 900;
       letter-spacing: 3px;
+      margin-bottom: 8px;
     }
 
-    .brand-name span {
-      color: var(--yellow);
+    .logo span {
+      color: #ffd43b;
     }
 
     .tagline {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 13px;
+      color: #999999;
+      font-size: 12px;
       letter-spacing: 1px;
+      margin-bottom: 35px;
     }
 
     .card {
+      background: #151515;
+      border: 1px solid #303030;
+      border-radius: 18px;
       padding: 28px 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 11px;
-      border-radius: 30px;
-      background: rgba(255, 212, 59, 0.12);
-      color: var(--yellow);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1px;
     }
 
     h1 {
-      margin-top: 18px;
-      font-size: 27px;
-      line-height: 1.2;
+      font-size: 25px;
+      margin-bottom: 12px;
     }
 
     .description {
-      margin-top: 12px;
-      color: var(--muted);
+      color: #b5b5b5;
       font-size: 14px;
       line-height: 1.7;
+      margin-bottom: 28px;
     }
 
-    .fee-box {
-      margin-top: 24px;
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: #202020;
-      border: 1px solid #393939;
-      border-radius: 14px;
-    }
-
-    .fee-label {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .fee-amount {
-      margin-top: 5px;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--yellow);
-    }
-
-    .fee-note {
-      color: var(--muted);
-      font-size: 11px;
-      text-align: right;
-    }
-
-    .section-title {
-      margin-top: 28px;
+    .label {
+      color: #999999;
+      font-size: 12px;
+      letter-spacing: 1px;
       margin-bottom: 12px;
-      font-size: 16px;
     }
 
     .upi-box {
-      padding: 15px;
-      background: #0d0d0d;
-      border: 1px solid #3c3c3c;
+      background: #0b0b0b;
+      border: 1px solid #393939;
       border-radius: 12px;
-    }
-
-    .upi-label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .upi-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+      padding: 18px 12px;
     }
 
     .upi-id {
-      font-size: 15px;
+      display: block;
+      color: #ffd43b;
+      font-size: 16px;
       font-weight: bold;
       overflow-wrap: anywhere;
-      color: var(--text);
+      margin-bottom: 18px;
     }
 
     .copy-button {
-      padding: 11px 14px;
+      width: 100%;
+      padding: 14px;
       border: none;
       border-radius: 9px;
-      background: var(--yellow);
+      background: #ffd43b;
       color: #111111;
+      font-size: 14px;
       font-weight: bold;
-      font-size: 12px;
       cursor: pointer;
     }
 
-    .copy-button:active {
-      transform: scale(0.97);
+    .copy-button:hover {
+      background: #ffe16b;
     }
 
-    .copy-status {
+    .status {
       min-height: 18px;
-      margin-top: 10px;
-      color: var(--yellow);
+      margin-top: 12px;
+      color: #ffd43b;
       font-size: 12px;
-    }
-
-    .steps {
-      margin-top: 20px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .step-number {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255, 212, 59, 0.13);
-      color: var(--yellow);
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .step-text {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .step-text strong {
-      color: var(--text);
-    }
-
-    .warning {
-      margin-top: 24px;
-      padding: 14px;
-      border-left: 3px solid var(--yellow);
-      border-radius: 5px;
-      background: rgba(255, 212, 59, 0.07);
-      color: #e2e2e2;
-      font-size: 12px;
-      line-height: 1.7;
     }
 
     .footer {
-      padding-top: 22px;
-      text-align: center;
-      color: #858585;
+      margin-top: 25px;
+      color: #777777;
       font-size: 12px;
-      line-height: 1.8;
     }
 
-    .footer strong {
-      color: var(--yellow);
-    }
-
-    @media (max-width: 380px) {
-      .card {
-        padding: 22px 16px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .upi-row {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .copy-button {
-        width: 100%;
-        padding: 13px;
-      }
+    .footer span {
+      color: #ffd43b;
     }
   </style>
 </head>
@@ -265,144 +129,53 @@
 <body>
   <main class="container">
 
-    <header class="brand">
-      <div class="brand-name">FINAL <span>TAKE</span></div>
-      <p class="tagline">EVERY STORY DESERVES A VOICE</p>
-    </header>
+    <div class="logo">FINAL <span>TAKE</span></div>
+    <p class="tagline">EVERY STORY DESERVES A VOICE</p>
 
     <section class="card">
-      <span class="badge">EVENT REGISTRATION</span>
-
-      <h1>You're almost in.</h1>
+      <h1>Registration Payment</h1>
 
       <p class="description">
-        Complete your registration by paying the event fee
-        using any UPI app of your choice.
+        Copy the UPI ID below to use it in your preferred UPI app.
       </p>
 
-      <div class="fee-box">
-        <div>
-          <p class="fee-label">Registration Fee</p>
-          <p class="fee-amount">₹10</p>
-        </div>
-        <p class="fee-note">
-          One-time<br>payment
-        </p>
-      </div>
-
-      <h2 class="section-title">Pay using any UPI app</h2>
+      <p class="label">FINAL TAKE UPI ID</p>
 
       <div class="upi-box">
-        <p class="upi-label">FINAL TAKE PAYMENT UPI ID</p>
+        <span class="upi-id" id="upiId">9959129903@pthdfc</span>
 
-        <div class="upi-row">
-          <span class="upi-id" id="upiId">
-            9959129903@pthdfc
-          </span>
+        <button class="copy-button" id="copyButton" type="button">
+          COPY UPI ID
+        </button>
 
-          <button
-            class="copy-button"
-            id="copyButton"
-            type="button">
-            COPY UPI ID
-          </button>
-        </div>
-
-        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <span class="step-number">1</span>
-          <p class="step-text">
-            <strong>Copy the UPI ID.</strong><br>
-            Tap the yellow button above.
-          </p>
-        </div>
-
-        <div class="step">
-          <span class="step-number">2</span>
-          <p class="step-text">
-            <strong>Open your UPI app.</strong><br>
-            Use Google Pay, PhonePe, Paytm,
-            or another supported app.
-          </p>
-        </div>
-
-        <div class="step">
-          <span class="step-number">3</span>
-          <p class="step-text">
-            <strong>Pay the registration fee.</strong><br>
-            Enter ₹10, verify the recipient's name
-            and amount, then authorize the payment.
-          </p>
-        </div>
-
-        <div class="step">
-          <span class="step-number">4</span>
-          <p class="step-text">
-            <strong>Complete your registration.</strong><br>
-            Return to the registration form and
-            provide the payment reference if requested.
-          </p>
-        </div>
-      </div>
-
-      <div class="warning">
-        <strong>Important:</strong> Always verify the
-        recipient name and amount inside your UPI app
-        before paying. Keep your transaction reference
-        for verification. Registration is confirmed only
-        after the payment has been verified.
+        <p class="status" id="status" aria-live="polite"></p>
       </div>
     </section>
 
     <footer class="footer">
-      Made for creators, storytellers and dreamers.<br>
-      <strong>FINAL TAKE</strong> · Every story matters.
+      Made with creativity by <span>Final Take</span>
     </footer>
 
   </main>
 
   <script>
-    const copyButton = document.getElementById("copyButton");
-    const copyStatus = document.getElementById("copyStatus");
     const upiId = document.getElementById("upiId").textContent.trim();
+    const copyButton = document.getElementById("copyButton");
+    const status = document.getElementById("status");
 
     copyButton.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(upiId);
         copyButton.textContent = "COPIED!";
-        copyStatus.textContent = "UPI ID copied successfully.";
-
-        setTimeout(() => {
-          copyButton.textContent = "COPY UPI ID";
-          copyStatus.textContent = "";
-        }, 2500);
+        status.textContent = "UPI ID copied successfully.";
       } catch (error) {
-        const textArea = document.createElement("textarea");
-        textArea.value = upiId;
-        textArea.style.position = "fixed";
-        textArea.style.opacity = "0";
-
-        document.body.appendChild(textArea);
-        textArea.select();
-
-        const copied = document.execCommand("copy");
-        textArea.remove();
-
-        if (copied) {
-          copyButton.textContent = "COPIED!";
-          copyStatus.textContent = "UPI ID copied successfully.";
-        } else {
-          window.prompt("Copy this UPI ID:", upiId);
-        }
-
-        setTimeout(() => {
-          copyButton.textContent = "COPY UPI ID";
-          copyStatus.textContent = "";
-        }, 2500);
+        window.prompt("Copy the UPI ID below:", upiId);
       }
+
+      setTimeout(() => {
+        copyButton.textContent = "COPY UPI ID";
+        status.textContent = "";
+      }, 2500);
     });
   </script>
 </body>
