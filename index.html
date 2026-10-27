@@ -5,9 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b0b0b">
-  <title>Final Take | Event Payment</title>
+
+  <title>Final Take | Event Registration</title>
 
   <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #151515;
+      --yellow: #ffd43b;
+      --text: #ffffff;
+      --muted: #b5b5b5;
+      --border: #303030;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,186 +26,383 @@
 
     body {
       min-height: 100vh;
+      padding: 24px 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      background: #0b0b0b;
-      color: #ffffff;
+      background:
+        radial-gradient(circle at top, #29230c 0%, var(--bg) 45%);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
     }
 
     .container {
       width: 100%;
-      max-width: 430px;
-      padding: 30px 24px;
-      background: #151515;
-      border: 1px solid #292929;
-      border-radius: 22px;
+      max-width: 480px;
+    }
+
+    .brand {
       text-align: center;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
-    }
-
-    .logo {
-      font-size: 14px;
-      font-weight: bold;
-      letter-spacing: 5px;
-      color: #f5d547;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #b9b9b9;
-      font-size: 15px;
-      line-height: 1.6;
       margin-bottom: 26px;
     }
 
-    .amount {
-      font-size: 42px;
-      font-weight: 800;
-      margin: 20px 0 8px;
+    .brand-name {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 3px;
     }
 
-    .amount-label {
-      color: #aaa;
+    .brand-name span {
+      color: var(--yellow);
+    }
+
+    .tagline {
+      margin-top: 8px;
+      color: var(--muted);
       font-size: 13px;
-      margin-bottom: 28px;
+      letter-spacing: 1px;
     }
 
-    .pay-button {
-      display: block;
-      width: 100%;
-      padding: 17px 20px;
-      border: none;
-      border-radius: 12px;
-      background: #f5d547;
-      color: #111111;
-      font-size: 17px;
+    .card {
+      padding: 28px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 30px;
+      background: rgba(255, 212, 59, 0.12);
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: 27px;
+      line-height: 1.2;
+    }
+
+    .description {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .fee-box {
+      margin-top: 24px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #202020;
+      border: 1px solid #393939;
+      border-radius: 14px;
+    }
+
+    .fee-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .fee-amount {
+      margin-top: 5px;
+      font-size: 28px;
       font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
+      color: var(--yellow);
     }
 
-    .pay-button:active {
-      transform: scale(0.98);
+    .fee-note {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
     }
 
-    .divider {
-      height: 1px;
-      background: #333;
-      margin: 25px 0;
+    .section-title {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .upi-box {
+      padding: 15px;
+      background: #0d0d0d;
+      border: 1px solid #3c3c3c;
+      border-radius: 12px;
     }
 
     .upi-label {
-      color: #aaa;
-      font-size: 13px;
+      color: var(--muted);
+      font-size: 12px;
       margin-bottom: 10px;
     }
 
+    .upi-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .upi-id {
-      overflow-wrap: anywhere;
-      color: #ffffff;
       font-size: 15px;
-      margin-bottom: 16px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+      color: var(--text);
     }
 
     .copy-button {
-      padding: 11px 18px;
-      border: 1px solid #555;
+      padding: 11px 14px;
+      border: none;
       border-radius: 9px;
-      background: transparent;
-      color: #ffffff;
-      font-size: 14px;
+      background: var(--yellow);
+      color: #111111;
+      font-weight: bold;
+      font-size: 12px;
       cursor: pointer;
     }
 
-    .note {
-      margin-top: 24px;
-      color: #929292;
+    .copy-button:active {
+      transform: scale(0.97);
+    }
+
+    .copy-status {
+      min-height: 18px;
+      margin-top: 10px;
+      color: var(--yellow);
       font-size: 12px;
+    }
+
+    .steps {
+      margin-top: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 212, 59, 0.13);
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .step-text {
+      color: var(--muted);
+      font-size: 13px;
       line-height: 1.6;
     }
 
+    .step-text strong {
+      color: var(--text);
+    }
+
+    .warning {
+      margin-top: 24px;
+      padding: 14px;
+      border-left: 3px solid var(--yellow);
+      border-radius: 5px;
+      background: rgba(255, 212, 59, 0.07);
+      color: #e2e2e2;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
     .footer {
-      margin-top: 22px;
-      color: #666;
-      font-size: 11px;
-      letter-spacing: 1px;
+      padding-top: 22px;
+      text-align: center;
+      color: #858585;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer strong {
+      color: var(--yellow);
+    }
+
+    @media (max-width: 380px) {
+      .card {
+        padding: 22px 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .upi-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .copy-button {
+        width: 100%;
+        padding: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
   <main class="container">
-    <div class="logo">FINAL TAKE</div>
 
-    <h1>Complete Your Payment</h1>
+    <header class="brand">
+      <div class="brand-name">FINAL <span>TAKE</span></div>
+      <p class="tagline">EVERY STORY DESERVES A VOICE</p>
+    </header>
 
-    <p class="subtitle">
-      Pay your event registration fee using your preferred UPI app.
-    </p>
+    <section class="card">
+      <span class="badge">EVENT REGISTRATION</span>
 
-    <div class="amount">₹10</div>
-    <p class="amount-label">Event registration fee</p>
+      <h1>You're almost in.</h1>
 
-  <a class="pay-button"
-   href="upi://pay?pa=9959129903%40pthdfc&amp;pn=Final%20Take&amp;tr=FTTEST001&amp;am=10.00&amp;cu=INR&amp;tn=Final%20Take%20registration">
-  Pay ₹10
-</a>
+      <p class="description">
+        Complete your registration by paying the event fee
+        using any UPI app of your choice.
+      </p>
 
-    <div class="divider"></div>
+      <div class="fee-box">
+        <div>
+          <p class="fee-label">Registration Fee</p>
+          <p class="fee-amount">₹10</p>
+        </div>
+        <p class="fee-note">
+          One-time<br>payment
+        </p>
+      </div>
 
-    <p class="upi-label">Or pay directly using this UPI ID</p>
+      <h2 class="section-title">Pay using any UPI app</h2>
 
-    <p class="upi-id" id="upiId">9959129903@pthdfc</p>
+      <div class="upi-box">
+        <p class="upi-label">FINAL TAKE PAYMENT UPI ID</p>
 
-    <button class="copy-button" id="copyButton" type="button">
-      Copy UPI ID
-    </button>
+        <div class="upi-row">
+          <span class="upi-id" id="upiId">
+            9959129903@pthdfc
+          </span>
 
-    <p class="note">
-      Verify the recipient name and amount in your UPI app before
-      authorizing payment. Keep your transaction reference number
-      for registration verification.
-    </p>
+          <button
+            class="copy-button"
+            id="copyButton"
+            type="button">
+            COPY UPI ID
+          </button>
+        </div>
 
-    <div class="footer">EVERY STORY DESERVES A VOICE</div>
+        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <p class="step-text">
+            <strong>Copy the UPI ID.</strong><br>
+            Tap the yellow button above.
+          </p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">2</span>
+          <p class="step-text">
+            <strong>Open your UPI app.</strong><br>
+            Use Google Pay, PhonePe, Paytm,
+            or another supported app.
+          </p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">3</span>
+          <p class="step-text">
+            <strong>Pay the registration fee.</strong><br>
+            Enter ₹10, verify the recipient's name
+            and amount, then authorize the payment.
+          </p>
+        </div>
+
+        <div class="step">
+          <span class="step-number">4</span>
+          <p class="step-text">
+            <strong>Complete your registration.</strong><br>
+            Return to the registration form and
+            provide the payment reference if requested.
+          </p>
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>Important:</strong> Always verify the
+        recipient name and amount inside your UPI app
+        before paying. Keep your transaction reference
+        for verification. Registration is confirmed only
+        after the payment has been verified.
+      </div>
+    </section>
+
+    <footer class="footer">
+      Made for creators, storytellers and dreamers.<br>
+      <strong>FINAL TAKE</strong> · Every story matters.
+    </footer>
+
   </main>
 
   <script>
     const copyButton = document.getElementById("copyButton");
+    const copyStatus = document.getElementById("copyStatus");
     const upiId = document.getElementById("upiId").textContent.trim();
 
     copyButton.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(upiId);
-        copyButton.textContent = "Copied!";
+        copyButton.textContent = "COPIED!";
+        copyStatus.textContent = "UPI ID copied successfully.";
+
+        setTimeout(() => {
+          copyButton.textContent = "COPY UPI ID";
+          copyStatus.textContent = "";
+        }, 2500);
       } catch (error) {
-        const input = document.createElement("textarea");
-        input.value = upiId;
-        input.style.position = "fixed";
-        input.style.opacity = "0";
-        document.body.appendChild(input);
-        input.select();
+        const textArea = document.createElement("textarea");
+        textArea.value = upiId;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+
+        document.body.appendChild(textArea);
+        textArea.select();
 
         const copied = document.execCommand("copy");
-        input.remove();
+        textArea.remove();
 
-        copyButton.textContent = copied
-          ? "Copied!"
-          : "Please copy the UPI ID manually";
+        if (copied) {
+          copyButton.textContent = "COPIED!";
+          copyStatus.textContent = "UPI ID copied successfully.";
+        } else {
+          window.prompt("Copy this UPI ID:", upiId);
+        }
+
+        setTimeout(() => {
+          copyButton.textContent = "COPY UPI ID";
+          copyStatus.textContent = "";
+        }, 2500);
       }
-
-      setTimeout(() => {
-        copyButton.textContent = "Copy UPI ID";
-      }, 2000);
     });
   </script>
 </body>
