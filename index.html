@@ -2,66 +2,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Final Take | Payment Test</title>
-<style>
-body {
-  margin: 0; min-height: 100vh; display: grid;
-  place-items: center; padding: 20px;
-  background: #101010; color: white;
-  font-family: Arial, sans-serif;
-}
-.card {
-  width: 100%; max-width: 400px; padding: 28px 22px;
-  box-sizing: border-box; text-align: center;
-  background: #1c1c1c; border: 1px solid #333;
-  border-radius: 20px;
-}
-.logo { color: #ffd43b; font-size: 28px; font-weight: bold; }
-.amount { font-size: 42px; font-weight: bold; margin: 20px; }
-button, .pay {
-  display: block; width: 100%; padding: 15px; margin-top: 12px;
-  box-sizing: border-box; border: 0; border-radius: 10px;
-  font-size: 16px; font-weight: bold; cursor: pointer;
-  text-decoration: none;
-}
-button { background: #ffd43b; color: #111; }
-.pay { background: #303030; color: white; }
-.note { color: #bbb; font-size: 13px; line-height: 1.6; }
-.upi { color: #ffd43b; overflow-wrap: anywhere; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>Final Take | Event Payment</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      padding: 30px 24px;
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      color: #f5d547;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #b9b9b9;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .amount {
+      font-size: 42px;
+      font-weight: 800;
+      margin: 20px 0 8px;
+    }
+
+    .amount-label {
+      color: #aaa;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .pay-button {
+      display: block;
+      width: 100%;
+      padding: 17px 20px;
+      border: none;
+      border-radius: 12px;
+      background: #f5d547;
+      color: #111111;
+      font-size: 17px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .pay-button:active {
+      transform: scale(0.98);
+    }
+
+    .divider {
+      height: 1px;
+      background: #333;
+      margin: 25px 0;
+    }
+
+    .upi-label {
+      color: #aaa;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .upi-id {
+      overflow-wrap: anywhere;
+      color: #ffffff;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .copy-button {
+      padding: 11px 18px;
+      border: 1px solid #555;
+      border-radius: 9px;
+      background: transparent;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .note {
+      margin-top: 24px;
+      color: #929292;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 22px;
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
+
 <body>
-<main class="card">
-  <div class="logo">FINAL TAKE</div>
-  <h2>Payment Test</h2>
-  <p>Sample registration payment</p>
-  <div class="amount">₹10</div>
+  <main class="container">
+    <div class="logo">FINAL TAKE</div>
 
-<a class="pay"
-   href="upi://pay?pa=karunkumar.p08%40oksbi&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR&amp;tn=Final%20Take%20test%20registration">
-  Pay ₹10
-</a>
+    <h1>Complete Your Payment</h1>
 
-  <p class="note">
-    TEST ONLY. Payment is not automatically verified.
-    Do not treat this page as a confirmed registration.
-  </p>
-</main>
+    <p class="subtitle">
+      Pay your event registration fee using your preferred UPI app.
+    </p>
 
-<script>
-async function copyUPI() {
-  const upi = "karunkumar.p08@oksbi";
-  try {
-    await navigator.clipboard.writeText(upi);
-    document.getElementById("message").textContent =
-      "UPI ID copied. Open your UPI app and paste it.";
-  } catch {
-    document.getElementById("message").textContent =
-      "Copy this UPI ID manually: " + upi;
-  }
-}
-</script>
+    <div class="amount">₹10</div>
+    <p class="amount-label">Event registration fee</p>
+
+    <a
+      class="pay-button"
+      href="upi://pay?pa=9959129903%40pthdfc&amp;pn=Final%20Take&amp;am=10.00&amp;cu=INR&amp;tn=Final%20Take%20event%20registration"
+    >
+      Pay ₹10
+    </a>
+
+    <div class="divider"></div>
+
+    <p class="upi-label">Or pay directly using this UPI ID</p>
+
+    <p class="upi-id" id="upiId">9959129903@pthdfc</p>
+
+    <button class="copy-button" id="copyButton" type="button">
+      Copy UPI ID
+    </button>
+
+    <p class="note">
+      Verify the recipient name and amount in your UPI app before
+      authorizing payment. Keep your transaction reference number
+      for registration verification.
+    </p>
+
+    <div class="footer">EVERY STORY DESERVES A VOICE</div>
+  </main>
+
+  <script>
+    const copyButton = document.getElementById("copyButton");
+    const upiId = document.getElementById("upiId").textContent.trim();
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(upiId);
+        copyButton.textContent = "Copied!";
+      } catch (error) {
+        const input = document.createElement("textarea");
+        input.value = upiId;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+
+        const copied = document.execCommand("copy");
+        input.remove();
+
+        copyButton.textContent = copied
+          ? "Copied!"
+          : "Please copy the UPI ID manually";
+      }
+
+      setTimeout(() => {
+        copyButton.textContent = "Copy UPI ID";
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
